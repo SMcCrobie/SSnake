@@ -21,7 +21,7 @@ public:
 };
 
 void reverse(vector<Snake_Block>* snake);
-void intializeSnake(vector<Snake_Block>* pSnake);
+void intializeSnake(vector<Snake_Block>* pSnake, int xStartPos);
 bool intialize ();
 
 
@@ -100,28 +100,9 @@ int main(int, char const**)
 	//SNAKE CREATION
 	vector <Snake_Block> snake;
 	vector <Snake_Block> snake2;
-	// intializeSnake(&snake);
-	// intializeSnake(&snake2);
+	intializeSnake(&snake, 10);
+	intializeSnake(&snake2, 790);
 	int number = 10;
-
-	for(int x = 0; x < number; x++){
-		Snake_Block box(sf::Vector2f(20, 20));
-		box.setFillColor(sf::Color::Blue);
-		box.setOrigin(10, 10);
-		box.setPosition(10, (100-(30*x)));
-		box.direction = olddirection;
-		snake.push_back(box);
-	}
-
-	for(int x = 0; x < number; x++){
-		Snake_Block box(sf::Vector2f(20, 20));
-		box.setFillColor(sf::Color::Yellow);
-		box.setOrigin(10, 10);
-		box.setPosition(790, (100-(30*x)));
-		box.direction = olddirection;
-		snake2.push_back(box);
-  	}
-        
 	
 	bool pause = false;
 	while (window.isOpen())
@@ -468,7 +449,7 @@ bool intialize (){
 }
 
 
-void intializeSnake(vector<Snake_Block>* pSnake){
+void intializeSnake(vector<Snake_Block>* pSnake, int xStartPos){
 	int number = 10;
 	sf::Vector2f direction(0, 30);
 
@@ -476,7 +457,7 @@ void intializeSnake(vector<Snake_Block>* pSnake){
 		Snake_Block box(sf::Vector2f(20, 20));
 		box.setFillColor(sf::Color::Blue);
 		box.setOrigin(10, 10);
-		box.setPosition(10, (100-(30*x)));
+		box.setPosition(xStartPos, (100-(30*x)));
 		box.direction = direction;
 		pSnake->push_back(box);
 	}
